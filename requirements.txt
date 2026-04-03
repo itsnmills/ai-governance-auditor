@@ -1,0 +1,3 @@
+# AI Governance Checklist Auditor
+# No external dependencies — stdlib only (Python 3.10+)
+# dataclasses, typing, enum, datetime, argparse, json, os all built-in
