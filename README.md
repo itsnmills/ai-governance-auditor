@@ -243,3 +243,91 @@ This project demonstrates practical knowledge of:
 ---
 
 *This tool is for educational and consulting purposes. It does not constitute legal advice. All regulatory guidance should be verified with a qualified HIPAA attorney or compliance officer.*
+
+
+---
+
+## System Requirements
+
+| Requirement | Details |
+|---|---|
+| **Python** | 3.10 or higher ([python.org](https://www.python.org/downloads/)) |
+| **Operating System** | Windows, macOS, or Linux |
+| **Disk Space** | < 5 MB |
+| **RAM** | 128 MB minimum |
+| **Network** | Not required — runs entirely offline |
+| **External dependencies** | **None** — this tool uses only Python standard library modules (`dataclasses`, `typing`, `enum`, `datetime`, `argparse`, `json`, `os`) |
+
+### Installation
+
+```bash
+git clone https://github.com/itsnmills/ai-governance-auditor.git
+cd ai-governance-auditor
+# No external dependencies — Python stdlib only
+```
+
+### Dependencies
+
+**This tool has zero external dependencies.** It uses only Python standard library modules:
+
+| Module | What It Does |
+|---|---|
+| `dataclasses` | Defines the VendorIntake data model (40+ fields) |
+| `typing` / `enum` | Type annotations and enumeration types |
+| `datetime` | Timestamps for audit reports |
+| `argparse` | CLI argument parsing |
+| `json` | Reading/writing vendor intake data |
+| `os` | File system operations for report output |
+
+No `pip install` required. If you have Python 3.10+, you can run this tool immediately.
+
+---
+
+## What This Tool Accesses On Your System
+
+This tool runs 100% locally on your machine. Here is exactly what it reads, writes, and accesses:
+
+| What | Access Type | Details |
+|---|---|---|
+| **Local filesystem** | Read/Write | Reads vendor intake JSON files from `sample_vendors/` (or your own intake data). Writes risk cards and audit reports as Markdown files to `reports/`. |
+| **No external APIs** | None | This tool makes zero outbound network requests. No vendor names, audit findings, or risk scores are sent anywhere. |
+| **No telemetry** | None | No analytics, tracking, crash reporting, or phone-home behavior of any kind. |
+| **No database** | None | No database of any kind — all data is in flat files you can read and inspect. |
+
+**Demo mode:** The tool includes 5 realistic but entirely fictional AI vendor profiles (DAX Copilot, ChatGPT Consumer, ClearPath SmartSchedule, Waystar, Epic AI). These demonstrate the scoring engine across the full risk spectrum. No real vendor or clinic data is involved.
+
+---
+
+## Privacy & Open Source Transparency
+
+**This is open-source software. You download it, you run it, you own it.**
+
+| Concern | Answer |
+|---|---|
+| **Can the developer see my data?** | No. This tool runs entirely on your machine. The developer (or anyone else) has zero access to your data, your results, or your system. |
+| **Does it phone home?** | No. There are no analytics, telemetry, crash reporting, update checks, or network calls of any kind. |
+| **Is my data stored in the cloud?** | No. All data stays on your local machine in files you can inspect, move, back up, or delete at any time. |
+| **Can I audit the code?** | Yes. Every line of source code is available in this repository. The MIT license gives you the right to use, modify, and distribute it. |
+| **Is it safe to use with real organizational data?** | Yes — but as with any tool, follow your organization's data handling policies. Since everything runs locally, your data never leaves your control. |
+
+> **If you're evaluating this tool for your organization:** Download it, review the source code, run the demo mode first, and verify for yourself that it meets your security requirements. That's the entire point of open source.
+
+## Keeping Threat Intelligence & Regulatory Data Current
+
+The 30 finding types are mapped to:
+- **HIPAA Security Rule** (45 CFR §164 — specific section references per finding)
+- **HIPAA Privacy Rule** + **HHS OCR 2025 AI Guidance**
+- **NIST AI Risk Management Framework (AI 100-1)** — GOVERN, MAP, MEASURE, MANAGE functions
+- **FDA SaMD classification** guidance
+
+When regulations or AI governance frameworks are updated, the scoring engine and finding definitions will be updated accordingly:
+
+```bash
+git pull origin main
+```
+
+---
+
+## Security
+
+If you discover a security vulnerability in this tool, please report it responsibly by opening a GitHub issue or contacting the maintainer directly. Do not submit PHI or real patient data in bug reports.
